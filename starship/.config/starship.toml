@@ -1,7 +1,10 @@
+# Configured for starship 0.56.0
+
 add_newline = true
 
 [character]
-error_symbol = '[✗  \$](bold red)'
+# See `status` module for printing out the status code
+error_symbol = '[ \$](bold red)'
 success_symbol = '[✔  \$](bold green)'
 
 [cmd_duration]
@@ -10,20 +13,27 @@ show_notifications = true
 [directory]
 truncation_length = 2
 
+[git_status]
+disabled = true
+
 [hostname]
 ssh_only = false
 
 [jobs]
-symbol = "jobs: "
+symbol = "[jobs: $number]($style) "
 
 [memory_usage]
 disabled = false
-
 
 [time]
 disabled = false
 format = "[$time]($style) "
 time_format = "%F %T"
+
+[status]
+disabled = false
+symbol = "✗"
+format = "[$symbol $status $common_meaning$signal_name]($style) "
 
 [username]
 show_always = true

@@ -1,0 +1,14 @@
+#! /usr/bin/env bash
+
+# Lesser used. Might nuke these later.
+
+
+# From https://www.cyberciti.biz/faq/linux-which-process-is-using-swap/
+# Called dirty because 
+what_is_swapping () {
+	for file in /proc/*/status ; do awk '/VmSwap|Name/{printf $2 " " $3}END{ print ""}' $file; done | sort -k 2 -n -r | less
+}
+
+# Adapted from https://unix.stackexchange.com/a/367
+highlight () { \grep --color=always -E "$1|$" "${@:2}" ; }
+

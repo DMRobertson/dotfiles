@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+
+export EDITOR="vim"
+export LESS="JMRWij.5"
+export MANPAGER="less -n" # suppress line numbers in less when viewing man pages
+export PYTHONDONTWRITEBYTECODE=1
+
+export HISTSIZE=-1
+export HISTFILESIZE=-1
+export HISTTIMEFORMAT="%F %T  "
+export PROMPT_COMMAND="history -a;$PROMPT_COMMAND"

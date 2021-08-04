@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+
+#bash options. Possibly redundant with sufficiently new bash?
+shopt -s checkjobs          #If set, list bg jobs before exit and require another exit
+shopt -s hostcomplete       #If set, use readline to attempt to complete host names after an @

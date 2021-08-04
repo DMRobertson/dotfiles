@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 #DMR: my own aliases. Some of these are probably bad habits...
 alias du="du -h --max-depth 1"
@@ -21,13 +21,4 @@ alias od='od -c -tx1'
 alias readlink='readlink -e'
 
 alias whereis='echo "Do you mean the \"which\" command (which searches on your PATH)?" >&2; whereis'
-
-# From https://www.cyberciti.biz/faq/linux-which-process-is-using-swap/
-# Called dirty because 
-what_is_swapping () {
-	for file in /proc/*/status ; do awk '/VmSwap|Name/{printf $2 " " $3}END{ print ""}' $file; done | sort -k 2 -n -r | less
-}
-
-# Adapted from https://unix.stackexchange.com/a/367
-highlight () { \grep --color=always -E "$1|$" "${@:2}" ; }
 

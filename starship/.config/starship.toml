@@ -1,0 +1,39 @@
+add_newline = true
+
+[character]
+error_symbol = '[✗  \$](bold red)'
+success_symbol = '[✔  \$](bold green)'
+
+[cmd_duration]
+show_notifications = true
+
+[directory]
+truncation_length = 2
+
+[hostname]
+ssh_only = false
+
+[jobs]
+symbol = "jobs: "
+
+[memory_usage]
+disabled = false
+
+
+[time]
+disabled = false
+format = "[$time]($style) "
+time_format = "%F %T"
+
+[username]
+show_always = true
+format = "[$user]($style) on "
+
+
+
+
+
+
+
+
+

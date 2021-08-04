@@ -1,0 +1,53 @@
+" Selected Intellimacs modules
+" source ~/.intellimacs/spacemacs.vim
+" source ~/.intellimacs/extra.vim
+" source ~/.intellimacs/major.vim
+" source ~/.intellimacs/hybrid.vim
+
+""" Settings to behave as similar as possible to spacemacs defaults
+
+" <SPC> as the leader key
+let mapleader = " "
+
+" Show current vim mode
+set showmode
+
+" Use the clipboard register '*' for all yank, delete, change and put operations
+" which would normally go to the unnamed register.
+set clipboard+=unnamed
+
+" Search as characters are entered
+set incsearch
+
+" Highlight search results
+set hlsearch
+
+" If a pattern contains an uppercase letter, searching is case sensitive,
+" otherwise, it is not.
+set ignorecase
+set smartcase
+
+" Emulate vim-surround. Commands: ys, cs, ds, S.
+set surround
+
+""" Settings that are not present in spacemacs defaults
+
+" Emulates vim-multiple-cursors. Commands: <A-n>, <A-x>, <A-p>, g<A-n>
+set multiple-cursors
+
+" Add text object for function arguments: aa (around argument), ia (inside argument)
+set argtextobj
+
+" Add text object for entire buffer: ae (around buffer), ie (inside buffer)
+set textobj-entire
+
+" Replace with register content shortcut: https://github.com/vim-scripts/ReplaceWithRegister
+set ReplaceWithRegister
+
+
+" My own vim commands
+nnoremap Y y$
+map <A-J> :action MoveLineDown<CR>
+map <A-K> :action MoveLineUp<CR>
+   
+set ideajoin

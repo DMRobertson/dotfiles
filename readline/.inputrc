@@ -1,0 +1,17 @@
+$include /etc/inputrc
+
+set completion-ignore-case on
+# See https://superuser.com/a/251125
+set colored-stats on
+set colored-completion-prefix on
+
+# https://help.ubuntu.com/community/UsingTheTerminal#An_extremely_handy_tool_::_Incremental_history_searching
+
+# Up arrow
+"\e[A": history-search-backward
+# Down arrow
+"\e[B": history-search-forward
+# ???
+"\e[1;5B": end-of-history
+# Ctrl-delete
+"\e[3;5~": kill-word

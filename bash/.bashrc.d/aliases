@@ -22,3 +22,7 @@ alias readlink='readlink -e'
 
 alias whereis='echo "Do you mean the \"which\" command (which searches on your PATH)?" >&2; whereis'
 
+# ripgrep
+#   case insensitive by default
+#   don't ignore directories that are hidden by an initial . (but do ignore .git)
+alias rg="rg -i --hidden --glob '!.git'"

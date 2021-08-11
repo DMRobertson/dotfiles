@@ -1,3 +1,6 @@
 [user]
 	email = david.m.robertson1@gmail.com
 	name = David Robertson
+
+[includeIf "gitdir:~/workspace/"]
+	path = ~/.config/git/config-element

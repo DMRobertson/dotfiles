@@ -4,3 +4,6 @@
 
 [includeIf "gitdir:~/workspace/"]
 	path = ~/.config/git/config-element
+[maintenance]
+	repo = /home/dmr/workspace/sytest
+	repo = /home/dmr/workspace/synapse

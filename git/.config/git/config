@@ -7,3 +7,7 @@
 [maintenance]
 	repo = /home/dmr/workspace/sytest
 	repo = /home/dmr/workspace/synapse
+[github]
+	user = DMRobertson
+[diff]
+	algorithm = histogram

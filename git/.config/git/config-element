@@ -1,2 +1,6 @@
 [user]
-	email = davidr@element.io
+email = davidr@element.io
+signingkey = 903ECE108A39DEDD
+
+[commit]
+gpgsign = true

@@ -6,8 +6,12 @@ alias df="df -h"
 alias free="free -h"
 alias calc="bc -l"
 
-# Pipe to clipboard!
-alias clipboard='xsel -ib' # https://askubuntu.com/a/184398
+# Pipe to clipboard! See
+# https://stackoverflow.com/a/32076280/5252017
+# or https://askubuntu.com/a/184398
+# or `man xsel`.
+alias clipset='xsel -ib'
+alias clipget='xsel -ob'
 
 alias ls='ls -h --color=auto'
 alias grep='grep -ni --color=always'

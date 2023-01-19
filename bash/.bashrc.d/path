@@ -1,11 +1,5 @@
 #! /usr/bin/env bash
 
-# User specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
-then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-fi
-
 # Nicked from https://superuser.com/a/39995
 path_append() {
     if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
@@ -19,6 +13,8 @@ path_prepend() {
     fi
 }
 
+path_prepend "$HOME/bin"
+path_prepend "$HOME/.local/bin"
 path_prepend "$HOME/.cargo/bin"
 path_prepend "$HOME/go/bin"
 path_prepend "$HOME/.npm-packages/bin"

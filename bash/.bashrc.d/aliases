@@ -14,9 +14,9 @@ alias clipset='xsel -ib'
 alias clipget='xsel -ob'
 
 alias ls='ls -h --color=auto'
-alias grep='grep -ni --color=always'
-alias fgrep='fgrep -ni --color=auto'
-alias egrep='egrep -ni --color=always'
+alias grep='grep -i --color=always'
+alias fgrep='fgrep -i --color=auto'
+alias egrep='egrep -i --color=always'
 
 #octal dump. I've never got round to learning its arguments.
 alias od='od -c -tx1'

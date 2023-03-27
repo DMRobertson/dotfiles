@@ -1,0 +1,5 @@
+#!/bin/sh
+# Nicked from https://stackoverflow.com/a/22840242/5252017
+echo 'This is Interactive Perl shell'
+rlwrap -A -pgreen -S"perl> " perl -wnE'say eval()//$@'
+

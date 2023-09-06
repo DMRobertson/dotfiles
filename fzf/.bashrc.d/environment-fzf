@@ -1,2 +1,3 @@
 # https://github.com/junegunn/fzf#respecting-gitignore
-export FZF_DEFAULT_COMMAND='fd --type f'
+# Use --hidden to show entries beginning with `.` which aren't gitignored.
+export FZF_DEFAULT_COMMAND='fd --type f --hidden'

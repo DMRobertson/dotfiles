@@ -1,5 +1,9 @@
 #! /usr/bin/env bash
 
+# Let me use ctrl-s for forward incremental search, please. See
+# https://susam.net/blog/from-xon-xoff-to-forward-incremental-search.html
+stty -ixon
+
 #bash options. Possibly redundant with sufficiently new bash?
 shopt -s checkjobs          #If set, list bg jobs before exit and require another exit
 shopt -s hostcomplete       #If set, use readline to attempt to complete host names after an @

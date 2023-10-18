@@ -1,20 +1,16 @@
-" Selected Intellimacs modules
-" source ~/.intellimacs/spacemacs.vim
-" source ~/.intellimacs/extra.vim
-" source ~/.intellimacs/major.vim
-" source ~/.intellimacs/hybrid.vim
-
-""" Settings to behave as similar as possible to spacemacs defaults
-
-" <SPC> as the leader key
-let mapleader = " "
+" See https://github.com/JetBrains/ideavim/wiki/ for config
 
 " Show current vim mode
 set showmode
 
+set showcmd
+
 " Use the clipboard register '*' for all yank, delete, change and put operations
 " which would normally go to the unnamed register.
-set clipboard+=unnamed
+" set clipboard+=unnamed
+" DMR: I don't fully follow the 
+" https://youtrack.jetbrains.com/issue/VIM-3074/Paste-into-visual-selection-broken-in-2.5.1#focus=Comments-27-8126700.0-0
+set clipboard^=unnamedplus
 
 " Search as characters are entered
 set incsearch
@@ -28,26 +24,36 @@ set ignorecase
 set smartcase
 
 " Emulate vim-surround. Commands: ys, cs, ds, S.
-set surround
-
-""" Settings that are not present in spacemacs defaults
-
-" Emulates vim-multiple-cursors. Commands: <A-n>, <A-x>, <A-p>, g<A-n>
-set multiple-cursors
-
-" Add text object for function arguments: aa (around argument), ia (inside argument)
-set argtextobj
-
-" Add text object for entire buffer: ae (around buffer), ie (inside buffer)
-set textobj-entire
 
 " Replace with register content shortcut: https://github.com/vim-scripts/ReplaceWithRegister
 set ReplaceWithRegister
 
-
 " My own vim commands
+" make capital Y yank to end of line, instead of the entire line, for
+" consistency with D
 nnoremap Y y$
+" alt+J/K to move lines up and down. I inherited this from spacemacs I think?
 map <A-J> :action MoveLineDown<CR>
 map <A-K> :action MoveLineUp<CR>
    
+" Workaround false visual selection after undo, see
+" https://youtrack.jetbrains.com/issue/VIM-3092/When-deleting-in-visual-undo-the-line-looks-selected-but-vim-is-really-in-normal-mode
+nnoremap u u<Esc>
+
+# Plugins from https://github.com/JetBrains/ideavim/wiki/IdeaVim-Plugins
+" Normally the { and } motions only match completely empty lines. With this plugin lines that only contain whitespace are also matched.
+Plug 'dbakker/vim-paragraph-motion'
+
+Plug 'machakann/vim-highlightedyank'
+set quickscope
+set surround
+
+" Emulates vim-multiple-cursors. Commands: <A-n>, <A-x>, <A-p>, g<A-n>
+set multiple-cursors
+" Add text object for function arguments: aa (around argument), ia (inside argument)
+set argtextobj
+" Add text object for entire buffer: ae (around buffer), ie (inside buffer)
+set textobj-entire
+
 set ideajoin
+

@@ -5,9 +5,7 @@ export LESS="FJMRWij.5"
 # By default, set to FRSXMK. Let's try 
 export SYSTEMD_LESS="JMRWij.5"
 
-
 export MANPAGER="less -n" # suppress line numbers in less when viewing man pages
-export PYTHONDONTWRITEBYTECODE=1
 
 export HISTSIZE=-1
 export HISTFILESIZE=-1

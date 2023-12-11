@@ -45,7 +45,7 @@ nnoremap u u<Esc>
 Plug 'dbakker/vim-paragraph-motion'
 
 Plug 'machakann/vim-highlightedyank'
-set quickscope
+" set quickscope
 set surround
 
 " Emulates vim-multiple-cursors. Commands: <A-n>, <A-x>, <A-p>, g<A-n>

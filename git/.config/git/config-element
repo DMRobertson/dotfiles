@@ -1,9 +1,0 @@
-[user]
-email = davidr@element.io
-signingkey = 903ECE108A39DEDD
-
-[commit]
-gpgsign = true
-
-[tag]
-gpgsign = true

@@ -3,12 +3,7 @@
     name = David Robertson
 
 [includeIf "gitdir:~/workspace/"]
-    path = ~/.config/git/config-element
-[maintenance]
-    repo = /home/dmr/workspace/sytest
-    repo = /home/dmr/workspace/synapse
-[github]
-    user = DMRobertson
+    path = ~/.config/git/config-octopus
 [diff]
     algorithm = histogram
     colorMoved = default

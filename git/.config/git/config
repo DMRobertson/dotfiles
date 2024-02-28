@@ -1,9 +1,20 @@
-[user]
-    email = david.m.robertson1@gmail.com
-    name = David Robertson
 
-[includeIf "gitdir:~/workspace/"]
-    path = ~/.config/git/config-octopus
+[user]
+email = david.robertson@octopusmoney.com
+signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIILarZscuzmqlTDOSimEV3R+zIxbmlXV8JPJ1rB1W5Gt
+
+[url "ssh://git@github.com/"]
+insteadOf = https://github.com/
+
+[gpg]
+format = ssh
+
+[gpg "ssh"]
+program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+gpgsign = true
+
 [diff]
     algorithm = histogram
     colorMoved = default

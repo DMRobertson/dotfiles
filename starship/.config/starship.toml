@@ -43,6 +43,8 @@ format = "[$user]($style) on "
 
 
 
+[docker_context]
+disabled = true
 
 
 

@@ -39,9 +39,7 @@ format = "[$symbol $status $common_meaning$signal_name]($style) "
 
 [username]
 show_always = true
-format = "[$user]($style) on "
-
-
+format = " [$user]($style) on "
 
 [docker_context]
 disabled = true

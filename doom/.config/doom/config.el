@@ -61,3 +61,12 @@
               :desc "Split horizontally" "w -" 'evil-window-split
               :desc "Split vertically" "w |" 'evil-window-vsplit
               )
+
+;; Xmouse mode in terminal?
+;; https://www.reddit.com/r/emacs/comments/s3lwtj/comment/ht3plwy/
+(unless window-system
+  (require 'mouse)
+  (xterm-mouse-mode t)
+  (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
+  (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
+  )

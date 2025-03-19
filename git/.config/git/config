@@ -16,10 +16,24 @@ program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 gpgsign = true
 
 [diff]
-    algorithm = histogram
-    colorMoved = default
+	algorithm = histogram
+	colorMoved = default
 
+# Difftastic
+# From https://difftastic.wilfred.me.uk/git.html#regular-usage
+[diff]
+	tool = difftastic ## setup `git difftool` to run difftastic
 
+[difftool "difftastic"]
+        cmd = difft "$LOCAL" "$REMOTE"
+
+[difftool]
+       prompt = false
+
+[pager]
+       difftool = true
+
+# Delta
 # From https://github.com/dandavison/delta#get-started
 [core]
     pager = delta
@@ -33,4 +47,9 @@ gpgsign = true
 [merge]
     conflictstyle = diff3
 [alias]
-	delete-squashed = "!f() { local targetBranch=${1:-master} && git checkout -q $targetBranch && git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d && git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base $targetBranch $branch) && [[ $(git cherry $targetBranch $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == \"-\"* ]] && git branch -D $branch; done; }; f"
+	delete-squashed = "!f() { local targetBranch=${1:-main} && git checkout -q $targetBranch && git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d && git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base $targetBranch $branch) && [[ $(git cherry $targetBranch $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == \"-\"* ]] && git branch -D $branch; done; }; f"
+
+[core]
+excludesFile = ~/.config/git/ignore
+[rerere]
+	enabled = true

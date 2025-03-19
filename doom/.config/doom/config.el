@@ -7,7 +7,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "David Roertson"
-      user-mail-address "david.m.robertson1@gmail.com")
+      user-mail-address "david.robertson@octopusmoney.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -70,3 +70,33 @@
   (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
   (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
   )
+
+(after! magit
+  ;;Magit: relax the line length to allow the chore and notion markers
+  (setq git-commit-summary-max-length (+ 68 (length "chore(0000):  [TASK-0000]")))
+  ;; Magit: show assume-unchanged files in status view
+  (magit-add-section-hook 'magit-status-sections-hook 'magit-insert-assume-unchanged-files 'magit-insert-staged-changes 'after)
+  ;; (setq magit-show-long-lines-warning nil)
+  )
+
+;; Magit: press h during rebase to reset author
+;; https://gist.github.com/danielmartin/34bc36dafd8f900de483394087230f48
+;;  (defun dm/change-commit-author (arg)
+;;  "Change the commit author during an interactive rebase in Magit.
+;;  With a prefix argument, insert a new change commit author command
+;;  even when there is already another rebase command on the current
+;;  line.  With empty input, remove the change commit author action
+;;  on the current line, if any."
+;;  (interactive "P")
+;;  (let ((author
+;;          (magit-transient-read-person "Select a new author for this commit"
+;;                          nil
+;;                          nil)))
+;;  (git-rebase-set-noncommit-action
+;;  "exec"
+;;  (lambda (_) (if author
+;;                  (format "git commit --amend --author='%s'" author)
+;;                  ""))
+;;  arg)))
+;;
+;;  (define-key git-rebase-mode-map (kbd "h") #'dm/change-commit-author)

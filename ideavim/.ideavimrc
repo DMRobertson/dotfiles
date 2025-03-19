@@ -5,6 +5,12 @@ set showmode
 
 set showcmd
 
+" Pressing escape in normal mode shouldn't make an audible bell.
+" This works because there is no visual bell implementation.
+" Ideally we would still make a bell sound for errors too..
+set visualbell
+
+
 " Use the clipboard register '*' for all yank, delete, change and put operations
 " which would normally go to the unnamed register.
 " set clipboard+=unnamed
@@ -24,6 +30,7 @@ set ignorecase
 set smartcase
 
 " Emulate vim-surround. Commands: ys, cs, ds, S.
+set surround
 
 " Replace with register content shortcut: https://github.com/vim-scripts/ReplaceWithRegister
 set ReplaceWithRegister
@@ -38,15 +45,33 @@ map <A-K> :action MoveLineUp<CR>
    
 " Workaround false visual selection after undo, see
 " https://youtrack.jetbrains.com/issue/VIM-3092/When-deleting-in-visual-undo-the-line-looks-selected-but-vim-is-really-in-normal-mode
-nnoremap u u<Esc>
+" nnoremap u u<Esc>
 
-# Plugins from https://github.com/JetBrains/ideavim/wiki/IdeaVim-Plugins
+" Plugins from https://github.com/JetBrains/ideavim/wiki/IdeaVim-Plugins
 " Normally the { and } motions only match completely empty lines. With this plugin lines that only contain whitespace are also matched.
 Plug 'dbakker/vim-paragraph-motion'
 
 Plug 'machakann/vim-highlightedyank'
 " set quickscope
-set surround
+
+" Space as leader key
+" nnoremap <SPACE> <Nop>
+" let mapleader = " "
+
+" https://github.com/JetBrains/ideavim/wiki/IdeaVim-Plugins#which-key
+" tried this out and it's nice... but doesn't have all the keybinds out of the box.
+" set which-key
+" set notimeout
+" set timeoutlen=5000
+" let g:WhichKey_ShowVimActions = "true"
+" let g:WhichKeyDesc_change = "c change"
+" let g:WhichKeyDesc_delete = "d delete"
+" let g:WhichKeyDesc_delete_surrounding = "ds surrounding"
+" let g:WhichKeyDesc_yank = "y yank"
+" let g:WhichKeyDesc_yank = "Y yank to EOL"
+" let g:WhichKeyDesc_goto = "g goto"
+
+
 
 " Emulates vim-multiple-cursors. Commands: <A-n>, <A-x>, <A-p>, g<A-n>
 set multiple-cursors
@@ -54,6 +79,6 @@ set multiple-cursors
 set argtextobj
 " Add text object for entire buffer: ae (around buffer), ie (inside buffer)
 set textobj-entire
-
+" Let the IDE do joining, see https://github.com/JetBrains/ideavim/blob/master/doc/ideajoin-examples.md
 set ideajoin
 

@@ -1,19 +1,15 @@
+[alias]
+	delete-squashed = "!f() { local targetBranch=${1:-main} && git checkout -q $targetBranch && git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d && git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base $targetBranch $branch) && [[ $(git cherry $targetBranch $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == \"-\"* ]] && git branch -D $branch; done; }; f"
 
-[user]
-email = david.robertson@octopusmoney.com
-signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIILarZscuzmqlTDOSimEV3R+zIxbmlXV8JPJ1rB1W5Gt
-
-[url "ssh://git@github.com/"]
-insteadOf = https://github.com/
-
-[gpg]
-format = ssh
-
-[gpg "ssh"]
-program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+[branch]
+sort = -committerdate
 
 [commit]
 gpgsign = true
+
+[core]
+excludesFile = ~/.config/git/ignore
+	ignorecase = false
 
 [diff]
 	algorithm = histogram
@@ -30,9 +26,6 @@ gpgsign = true
 [difftool]
        prompt = false
 
-[pager]
-       difftool = true
-
 # Delta
 # From https://github.com/dandavison/delta#get-started
 [core]
@@ -44,12 +37,37 @@ gpgsign = true
 [delta]
     navigate = true  # use n and N to move between diff sections
 
-[merge]
-    conflictstyle = diff3
-[alias]
-	delete-squashed = "!f() { local targetBranch=${1:-main} && git checkout -q $targetBranch && git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d && git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base $targetBranch $branch) && [[ $(git cherry $targetBranch $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == \"-\"* ]] && git branch -D $branch; done; }; f"
+[interactive]
+    diffFilter = delta --color-only
 
-[core]
-excludesFile = ~/.config/git/ignore
+[delta]
+    navigate = true  # use n and N to move between diff sections
+
+[fetch]
+prune = true
+
+[gpg]
+format = ssh
+
+[gpg "ssh"]
+program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[pager]
+difftool = true
+
 [rerere]
 	enabled = true
+
+[url "ssh://git@github.com/"]
+insteadOf = https://github.com/
+
+[user]
+email = david.robertson@octopusmoney.com
+signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIILarZscuzmqlTDOSimEV3R+zIxbmlXV8JPJ1rB1W5Gt
+
+
+
+
+
+[push]
+	autoSetupRemote = true

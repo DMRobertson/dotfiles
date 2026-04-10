@@ -1,14 +1,43 @@
-# SET search_path TO "$user",public;
+-- # \set
+
+-- don't echo the impact of reading .sqlrc
+\set QUIET ON
+
+\set AUTOCOMMIT off
+
+\set HISTCONTROL ignoredups
+
 \set ON_ERROR_STOP on
 \set ON_ERROR_ROLLBACK interactive
 
-\x auto
+\set PROMPT1 '\n%[%033[1;33m%]%n%[%033[0m%] in %[%033[1;36m%]%/%[%033[1;32m%] %R%x%#%[%033[0m%] '
+\set PROMPT2 '%w%[%010%010%010%]%R%x%# '
+-- # \pset
 
-\pset null '¤'
+-- Expanded mode prints each column on a line of its own.
+-- "auto" means to use expanded mode when the number of available
+-- columns is insufficient to show the query result. 
+\pset expanded auto
+
+-- Make it easier to distinguish nulls from empty strings by rendering
+-- nulls as U+2205 EMPTY SET
+\pset null '∅'
+
 \pset linestyle 'unicode'
 \pset unicode_border_linestyle single
 \pset unicode_column_linestyle single
 \pset unicode_header_linestyle double
-set intervalstyle to 'postgres_verbose';
 
+-- # client options with regular 'set'
+
+set DateStyle to 'postgres';
+set IntervalStyle to 'postgres_verbose';
+
+
+-- # Other
+
+-- Print out how long each query took.
 \timing on
+
+-- Resume normal printing
+\unset QUIET

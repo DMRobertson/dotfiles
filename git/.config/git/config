@@ -9,11 +9,11 @@ gpgsign = true
 
 [core]
 excludesFile = ~/.config/git/ignore
-	ignorecase = false
+ignorecase = false
 
 [diff]
-	algorithm = histogram
-	colorMoved = default
+algorithm = histogram
+colorMoved = default
 
 # Difftastic
 # From https://difftastic.wilfred.me.uk/git.html#regular-usage
@@ -21,27 +21,27 @@ excludesFile = ~/.config/git/ignore
 	tool = difftastic ## setup `git difftool` to run difftastic
 
 [difftool "difftastic"]
-        cmd = difft "$LOCAL" "$REMOTE"
+cmd = difft "$LOCAL" "$REMOTE"
 
 [difftool]
-       prompt = false
+prompt = false
 
 # Delta
 # From https://github.com/dandavison/delta#get-started
 [core]
-    pager = delta
+pager = delta
 
 [interactive]
-    diffFilter = delta --color-only
+diffFilter = delta --color-only
 
 [delta]
-    navigate = true  # use n and N to move between diff sections
+navigate = true  # use n and N to move between diff sections
 
 [interactive]
-    diffFilter = delta --color-only
+diffFilter = delta --color-only
 
 [delta]
-    navigate = true  # use n and N to move between diff sections
+navigate = true  # use n and N to move between diff sections
 
 [fetch]
 prune = true
@@ -56,7 +56,7 @@ program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 difftool = true
 
 [rerere]
-	enabled = true
+enabled = true
 
 [url "ssh://git@github.com/"]
 insteadOf = https://github.com/

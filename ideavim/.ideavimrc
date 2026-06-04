@@ -3,25 +3,25 @@
 " Show current vim mode
 set showmode
 
+" See https://vimhelp.org/options.txt.html#%27showcmd%27
 set showcmd
 
 " Pressing escape in normal mode shouldn't make an audible bell.
 " This works because there is no visual bell implementation.
-" Ideally we would still make a bell sound for errors too..
+" Ideally we would still make a bell sound for errors too.
 set visualbell
-
 
 " Use the clipboard register '*' for all yank, delete, change and put operations
 " which would normally go to the unnamed register.
 " set clipboard+=unnamed
-" DMR: I don't fully follow the 
+" DMR: I don't fully follow the
 " https://youtrack.jetbrains.com/issue/VIM-3074/Paste-into-visual-selection-broken-in-2.5.1#focus=Comments-27-8126700.0-0
 set clipboard^=unnamedplus
 
 " Search as characters are entered
 set incsearch
 
-" Highlight search results
+"" Highlight search results
 set hlsearch
 
 " If a pattern contains an uppercase letter, searching is case sensitive,
@@ -42,43 +42,21 @@ nnoremap Y y$
 " alt+J/K to move lines up and down. I inherited this from spacemacs I think?
 map <A-J> :action MoveLineDown<CR>
 map <A-K> :action MoveLineUp<CR>
-   
+
 " Workaround false visual selection after undo, see
 " https://youtrack.jetbrains.com/issue/VIM-3092/When-deleting-in-visual-undo-the-line-looks-selected-but-vim-is-really-in-normal-mode
 " nnoremap u u<Esc>
 
-" Plugins from https://github.com/JetBrains/ideavim/wiki/IdeaVim-Plugins
-" Normally the { and } motions only match completely empty lines. With this plugin lines that only contain whitespace are also matched.
-Plug 'dbakker/vim-paragraph-motion'
-
 Plug 'machakann/vim-highlightedyank'
 " set quickscope
 
-" Space as leader key
-" nnoremap <SPACE> <Nop>
-" let mapleader = " "
-
-" https://github.com/JetBrains/ideavim/wiki/IdeaVim-Plugins#which-key
-" tried this out and it's nice... but doesn't have all the keybinds out of the box.
-" set which-key
-" set notimeout
-" set timeoutlen=5000
-" let g:WhichKey_ShowVimActions = "true"
-" let g:WhichKeyDesc_change = "c change"
-" let g:WhichKeyDesc_delete = "d delete"
-" let g:WhichKeyDesc_delete_surrounding = "ds surrounding"
-" let g:WhichKeyDesc_yank = "y yank"
-" let g:WhichKeyDesc_yank = "Y yank to EOL"
-" let g:WhichKeyDesc_goto = "g goto"
-
-
-
-" Emulates vim-multiple-cursors. Commands: <A-n>, <A-x>, <A-p>, g<A-n>
-set multiple-cursors
 " Add text object for function arguments: aa (around argument), ia (inside argument)
 set argtextobj
 " Add text object for entire buffer: ae (around buffer), ie (inside buffer)
 set textobj-entire
+
 " Let the IDE do joining, see https://github.com/JetBrains/ideavim/blob/master/doc/ideajoin-examples.md
 set ideajoin
 
+" text objects: `am` (a method), `aM` (a Method including JavaDoc/annotations), `im` (inner method body); activate
+set functextobj

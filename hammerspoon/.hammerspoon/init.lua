@@ -25,23 +25,34 @@ for i = 1, 9 do
             return
         end
 
-        -- Get the currently active application
         local frontApp = hs.application.frontmostApplication()
         
         -- Check if our target app is ALREADY the frontmost app
         if frontApp and frontApp:bundleID() == bundleID then
-            -- The app is already active. Let's handle window cycling.
             local windows = frontApp:allWindows()
             
-            -- Only cycle if there is more than one window open
-            if #windows > 1 then
-                -- allWindows() returns windows in z-order (front to back).
-                -- By focusing the last window in the array, we pull the bottom
-                -- window to the top, creating a smooth cycle through the stack.
-                windows[#windows]:focus()
+            if #windows == 0 then
+                -- Edge case: The app is active but has no windows at all (or they are hidden).
+                -- Firing the launch command again triggers macOS's default "open new window" behavior.
+                hs.application.launchOrFocusByBundleID(bundleID)
+            
+            elseif #windows == 1 then
+                -- Only one window exists. If it's minimized, unminimize it.
+                if windows[1]:isMinimized() then
+                    windows[1]:unminimize()
+                end
+                windows[1]:focus()
+            
             else
-                -- Optional: Brief alert if you tap it but there's nothing to cycle to
-                hs.alert.show("No other windows")
+                -- Multiple windows exist. Pull the bottom window to the top.
+                local targetWindow = windows[#windows]
+                
+                -- Explicitly unminimize it if it happens to be minimized in the Dock
+                if targetWindow:isMinimized() then
+                    targetWindow:unminimize()
+                end
+                
+                targetWindow:focus()
             end
         else
             -- The app is NOT active. Launch or bring its main window to the front.
@@ -49,4 +60,3 @@ for i = 1, 9 do
         end
     end)
 end
-

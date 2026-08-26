@@ -60,3 +60,7 @@ set ideajoin
 
 " text objects: `am` (a method), `aM` (a Method including JavaDoc/annotations), `im` (inner method body); activate
 set functextobj
+
+" Show the effect of a substitution before committing to it. See
+" https://github.com/JetBrains/ideaemacs/blob/22e626ad4be8c1482afb1f002c40a5be19bab6d9/CHANGES.md?plain=1#L40
+set inccommand=nosplit

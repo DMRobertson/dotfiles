@@ -23,7 +23,9 @@ export ITERM2_SQUELCH_MARK=1
 # W: highlights the first new line after a long movement. I can't seem to see this in action?
 # i: case insensitive search whenever the search is lowercase.
 # -j.5: when jumping, try to put the target in the middle of the screen.
-export LESS="FMRWij.5"
+# J: show status column, when searching or marking
+# --use-color: Enables colored text in various places.
+export LESS="FMRWij.5J--use-color"
 export MANPAGER="less -n" # suppress line numbers in less when viewing man pages
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;31;40'

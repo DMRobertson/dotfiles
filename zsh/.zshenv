@@ -28,3 +28,8 @@ export MANPAGER="less -n" # suppress line numbers in less when viewing man pages
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;31;40'
 
+export SSL_CERT_FILE="$HOME/workspace/CatoNetworksTrustedRootCA.pem"
+
+# Make python projects that use request trust the VPN MITM spyware cert
+# Update 2026-07-20: commenting out because aws cli broken by this
+# export REQUESTS_CA_BUNDLE="$HOME/workspace/CatoNetworksTrustedRootCA.pem"

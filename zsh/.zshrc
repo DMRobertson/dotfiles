@@ -110,7 +110,7 @@ autoload -Uz plsreviewme
 autoload -Uz debugandlog
 autoload -Uz echologs
 
-
+export AWS_DEFAULT_REGION=eu-west-2
 
 # postgres binaries TYVM
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"

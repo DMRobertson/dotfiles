@@ -22,7 +22,10 @@ fpath=(~/.zshcompletions $fpath);
 
 # Load completions
 autoload bashcompinit && bashcompinit
-autoload -Uz compinit && compinit
+# Use -u to ignore the warning that we don't own the completion scripts and they're writable.
+# https://workbrew.com/docs/how-to-fix-zsh-errors-after-installing-workbrew#insecure-directories-prompt
+# Thank you workbrew!!!!
+autoload -Uz compinit && compinit -u
 
 # Completion for aws, see https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html#cli-command-completion-linux
 complete -C '/usr/local/bin/aws_completer' aws

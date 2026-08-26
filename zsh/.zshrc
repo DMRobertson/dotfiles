@@ -7,6 +7,13 @@
 # Starship prompt
 eval "$(starship init zsh)"
 
+# ASDF, https://asdf-vm.com/guide/getting-started.html
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
+asdf completion zsh > "${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
+# append completions to fpath
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+
 # Don't write history entries that start with a space
 setopt HIST_IGNORE_SPACE
 

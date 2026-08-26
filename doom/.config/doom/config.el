@@ -64,16 +64,15 @@
 
 ;; Xmouse mode in terminal?
 ;; https://www.reddit.com/r/emacs/comments/s3lwtj/comment/ht3plwy/
-(unless window-system
-  (require 'mouse)
-  (xterm-mouse-mode t)
-  (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
-  (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
-  )
+;(unless window-system
+;  (require 'mouse)
+;  (xterm-mouse-mode t)
+;  (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
+;  (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
+;  )
 
 (after! magit
-  ;;Magit: relax the line length to allow the chore and notion markers
-  (setq git-commit-summary-max-length (+ 68 (length "chore(0000):  [TASK-0000]")))
+  (setq git-commit-summary-max-length 72)
   ;; Magit: show assume-unchanged files in status view
   (magit-add-section-hook 'magit-status-sections-hook 'magit-insert-assume-unchanged-files 'magit-insert-staged-changes 'after)
   ;; (setq magit-show-long-lines-warning nil)
@@ -100,3 +99,8 @@
 ;;  arg)))
 ;;
 ;;  (define-key git-rebase-mode-map (kbd "h") #'dm/change-commit-author)
+
+;; https://github.com/Azkae/magit-prime
+(use-package! magit-prime
+  :config
+  (magit-prime-mode))

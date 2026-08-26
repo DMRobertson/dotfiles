@@ -48,3 +48,12 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
+
+
+;; DMR: seems to be an undeclared dependency of magit?
+;; Related: https://github.com/doomemacs/core/issues/8270
+(package! llama)
+
+;; DMR: will this give me pure speed?
+;; https://github.com/Azkae/magit-prime
+(package! magit-prime)

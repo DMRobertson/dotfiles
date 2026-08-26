@@ -102,7 +102,7 @@ alias clipset=pbcopy
 alias clipget=pbpaste
 alias od='od -c -tx1'
 alias diff='diff --color=auto'
-
+alias finder='open -R'
 
 # Custom functions that are too long for here
 fpath=( ~/.zsh/functions "${fpath[@]}" )

@@ -30,8 +30,13 @@ export MANPAGER="less -n" # suppress line numbers in less when viewing man pages
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;31;40'
 
-export SSL_CERT_FILE="$HOME/workspace/CatoNetworksTrustedRootCA.pem"
+# Make python projects that use requests trust an exported copy of the system
+# root store, which includes the VPN MITM spyware cert
+# See
+# * https://knowledge.catonetworks.com/docs/configuring-cli-tools-and-dev-frameworks-to-work-with-cato-tls-inspection
+# * https://github.com/aws/aws-cli/issues/6193
+# * feels like there should be a similar issue in requests? But
+#   https://github.com/psf/requests/issues/2966 is closed
+export REQUESTS_CA_BUNDLE="$HOME/workspace/ca_bundle_for_requests.pem"
 
-# Make python projects that use request trust the VPN MITM spyware cert
-# Update 2026-07-20: commenting out because aws cli broken by this
-# export REQUESTS_CA_BUNDLE="$HOME/workspace/CatoNetworksTrustedRootCA.pem"
+export NODE_USE_SYSTEM_CA=1

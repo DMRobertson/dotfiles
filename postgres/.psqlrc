@@ -30,7 +30,7 @@
 
 -- # client options with regular 'set'
 
-set DateStyle to 'postgres';
+set DateStyle to 'European';
 set IntervalStyle to 'postgres_verbose';
 
 

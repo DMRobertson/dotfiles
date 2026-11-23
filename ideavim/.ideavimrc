@@ -64,3 +64,7 @@ set functextobj
 " Show the effect of a substitution before committing to it. See
 " https://github.com/JetBrains/ideaemacs/blob/22e626ad4be8c1482afb1f002c40a5be19bab6d9/CHANGES.md?plain=1#L40
 set inccommand=nosplit
+
+" :S and :%S for case-preserving find and replace
+" https://github.com/JetBrains/ideavim/wiki/IdeaVim-Plugins#abolish-case-aware-substitute-and-coercion-mappings-between-case-styles
+Plug 'tpope/vim-abolish'

@@ -72,11 +72,23 @@
 ;  )
 
 (after! magit
-  (setq git-commit-summary-max-length 72)
+  (setq git-commit-summary-max-length 65)
   ;; Magit: show assume-unchanged files in status view
   (magit-add-section-hook 'magit-status-sections-hook 'magit-insert-assume-unchanged-files 'magit-insert-staged-changes 'after)
   ;; (setq magit-show-long-lines-warning nil)
+
   )
+
+;; Magit: 
+;; Show most recently updated branches first
+;; and stop vertico from reordering them
+(after! (magit vertico)
+  (setq magit-list-refs-sortby "-committerdate")
+  
+  (defadvice! +magit--preserve-ref-order-a (fn &rest args)
+    :around #'magit-completing-read
+    (let ((vertico-sort-function nil))
+            (apply fn args))))
 
 ;; Magit: press h during rebase to reset author
 ;; https://gist.github.com/danielmartin/34bc36dafd8f900de483394087230f48

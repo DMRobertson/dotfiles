@@ -45,7 +45,9 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 ## INPUT
-#
+# Treat hashes as comment markers in interactive mode. (Why isn't this on normally?)
+setopt interactivecomments
+
 # From https://pencilflip.medium.com/my-zshrc-file-on-mac-adapted-from-bashrc-and-inputrc-16ac09efeb95
 # bindkey "\e[A" history-beginning-search-backward
 # bindkey "\e[B" history-beginning-search-forward
